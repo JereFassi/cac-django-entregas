@@ -154,9 +154,11 @@ class CuentaJoven(Cuenta):
 
     def es_titular_valido(self):
         try:
-            if self.__titular.es_mayor_de_edad():
-                if self.__titular.get_edad() < 25:
+            if super().get_titular.es_mayor_de_edad():
+                if super().get_titular.get_edad < 25:
                     return True
+        except Exception as e:
+            return print(f'CuentaJoven.es_titular_valido()', e)
         except:
             return print(f'CuentaJoven.es_titular_valido(): Ocurrio un error.')
         else:
@@ -168,13 +170,26 @@ class CuentaJoven(Cuenta):
                 return super().retirar(cantidad)
         except:
             return print(f'CuentaJoven.retirar(): Ocurrio un error.')
-    
+        
     def mostrar(self) -> str:
         # super().mostrar()
-        return print(f'Cuenta Joven. Bonificacion: {self.__bonificacion}')
+        return print(f'Cuenta Joven. Bonificacion: {self.__bonificacion}, Saldo: {super().get_cantidad}')
 
 def main():
-    pass
+    p1 = Persona("Coki", "Argento", 24, 38123456)
+    print(p1.mostrar())
+    print(p1.es_mayor_de_edad())
+
+    cj1 = CuentaJoven(p1, 1000, 25)
+    print(cj1.es_titular_valido())
+    cj1.mostrar()
+
+    try:
+        cj1.retirar(850)
+    except:
+        pass
+
+    cj1.mostrar()
 
 if __name__ == "__main__":
     main()
