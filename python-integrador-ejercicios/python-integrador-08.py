@@ -168,6 +168,10 @@ class CuentaJoven(Cuenta):
                 return super().retirar(cantidad)
         except:
             return print(f'CuentaJoven.retirar(): Ocurrio un error.')
+    
+    def mostrar(self) -> str:
+        # super().mostrar()
+        return print(f'Cuenta Joven. Bonificacion: {self.__bonificacion}')
 
 def main():
     pass
