@@ -113,7 +113,8 @@ class Cuenta:
 
     def ingresar(self,cantidad: float) -> float:
         try:
-            self.__cantidad += cantidad
+            if cantidad > 0:
+                self.__cantidad += cantidad
         except ValueError:
             return print(f'Cuenta.ingresar(): valor no válido.')
         except:
@@ -123,7 +124,8 @@ class Cuenta:
         
     def retirar(self,cantidad: float) -> float:
         try:
-            self.__cantidad -= cantidad
+            if cantidad > 0:
+                self.__cantidad -= cantidad
         except ValueError:
             return print(f'Cuenta.retirar(): valor no válido.')
         except:
